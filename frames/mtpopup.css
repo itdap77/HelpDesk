@@ -1,0 +1,105 @@
+.Form
+{
+    MARGIN: 0px;
+    BEHAVIOR: url("Popup.htc")
+}
+.PopupTable
+{
+    BORDER-RIGHT: black 2px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: black 2px solid;
+    PADDING-LEFT: 2px;
+    BACKGROUND: white;
+    PADDING-BOTTOM: 2px;
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    BORDER-LEFT: black 2px solid;
+    WIDTH: 400px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: black 2px solid;
+    HEIGHT: 160px
+}
+.PopupTitle
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    BACKGROUND: gray;
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    VERTICAL-ALIGN: middle;
+    BORDER-LEFT: black 1px solid;
+    WIDTH: 100%;
+    COLOR: #ffffff;
+    BORDER-BOTTOM: black 1px solid;
+    HEIGHT: 20px;
+    TEXT-ALIGN: center
+}
+.PopupAction
+{
+    PADDING-RIGHT: 2px;
+    PADDING-LEFT: 2px;
+    PADDING-BOTTOM: 0px;
+    WIDTH: 100%;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: gray 1px solid;
+    HEIGHT: 20px
+}
+.PopupAction TD
+{
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    VERTICAL-ALIGN: middle
+}
+.PopupResults
+{
+    PADDING-RIGHT: 2px;
+    PADDING-LEFT: 2px;
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    WIDTH: 100%;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: gray 1px solid;
+    HEIGHT: 98px
+}
+.PopupResults TD
+{
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    VERTICAL-ALIGN: top
+}
+.PopupResults A
+{
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    COLOR: red;
+    TEXT-DECORATION: none
+}
+.PopupFooter
+{
+    BORDER-RIGHT: 1px;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: medium none;
+    PADDING-LEFT: 2px;
+    PADDING-BOTTOM: 0px;
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    VERTICAL-ALIGN: middle;
+    BORDER-LEFT: 1px;
+    WIDTH: 100%;
+    COLOR: silver;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: 1px;
+    HEIGHT: 18px
+}
+.PopupFooter SPAN
+{
+    MARGIN: 0px;
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    CURSOR: hand;
+    COLOR: #336699
+}
+.PopupInputText
+{
+    BEHAVIOR: url("PopupInput.htc");
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica
+}
+.PopupList
+{
+    BEHAVIOR: url("PopupList.htc");
+    FONT: 8pt Tahoma, Arial, Verdana, Helvetica;
+    WIDTH: 100px
+}

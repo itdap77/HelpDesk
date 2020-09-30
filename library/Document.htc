@@ -1,0 +1,83 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:PROPERTY NAME="FieldOnFocus" />
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="init_Document()" />
+
+<SCRIPT language="JScript">
+
+var oDocument = window.document;
+
+function init_Document()
+{
+	init_SetFocus();
+	oDocument.attachEvent('onkeydown',doFunctionKey);
+}
+
+function init_SetFocus()
+{
+
+	var lForms = oDocument.forms;
+	var lElement
+	var lForm
+	
+	if (FieldOnFocus)
+	{	
+		var vDot = FieldOnFocus.lastIndexOf(".");
+		if (vDot != -1) 
+		{
+			lForm = oDocument.all(FieldOnFocus.substr(0, vDot));
+			if (lForm)
+			{
+				lElement = lForm.elements(FieldOnFocus.substr(vDot + 1));
+				if (lElement)
+					if (lElement.type == 'hidden' || lElement.type == 'button')
+						lElement = null;
+			}
+		}
+	}
+
+
+	if (!lElement)
+	{
+		for (i=0; i < lForms.length ; i++)
+		{		
+			lForm = lForms[i]
+
+			if (lForm.IsMainForm == 'true')
+			{
+				var lElements = lForm.elements
+				for (x=0; x < lElements.length ; x++)
+				{
+					if (lElements[x].type != 'hidden' && lElements[x].type != 'button')
+					{
+						lElement = lElements[x];
+						x = lElements.length;
+					}
+				}
+			}
+		}
+	}
+
+	if (lElement)
+	{
+		lElement.focus();
+		if (lElement.tagName == 'INPUT')
+			lElement.select();
+	}
+}
+
+function doFunctionKey()
+{
+	switch (event.keyCode){
+	case 123: //Key F12
+	{
+		OpenHelp();
+		break;
+	}
+	}
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

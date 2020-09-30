@@ -1,0 +1,307 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:METHOD NAME="SubmitReload" />
+<PUBLIC:METHOD NAME="SubmitSave" />
+<PUBLIC:METHOD NAME="SubmitEstado" />
+<PUBLIC:METHOD NAME="SubmitDelete" />
+<PUBLIC:METHOD NAME="CheckFields" />
+<PUBLIC:PROPERTY NAME="IsMainForm" />
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="init_Document()" />
+
+<SCRIPT language="JScript">
+
+var oDocument = window.document;
+var oForm = oDocument.all(this.name);
+
+function init_Document()
+{
+
+	oForm.attachEvent('onkeydown',doFunctionKey);
+
+	// Atachar eventos a elementos
+	var oElements = oForm.elements
+	for (x=0; x < oElements.length ; x++)
+	{
+		switch (oElements[x].tagName){
+		case 'TEXTAREA':
+		{
+			oElements[x].attachEvent('onkeydown', doFunctionKey);
+			oElements[x].attachEvent('onchange', CheckFieldEvent);
+			break;
+		}
+		case 'INPUT':
+		{
+			if (oElements[x].type != 'hidden' 
+				&& oElements[x].type != 'button')
+			{
+				oElements[x].attachEvent('onkeydown', doFunctionKey);
+				oElements[x].attachEvent('onchange', CheckFieldEvent);
+			}
+			break;
+		}
+		case 'SELECT':
+		{
+			oElements[x].attachEvent('onchange', CheckFieldEvent);
+			break;
+		}
+		}
+	}
+
+}
+
+function CheckFieldEvent()
+{
+	CheckField(whichElement(), true);
+}
+
+function whichElement()
+{
+	var e = event.srcElement
+	while (e.tagName != 'INPUT' && e.tagName != 'TEXTAREA' && e.tagName != 'SELECT')
+		e = e.parentElement
+	return e
+}
+
+function whichForm()
+{
+	var e = event.srcElement
+	while (e.tagName != 'FORM')
+		e = e.parentElement
+	return e
+}
+
+function CheckField(oElement, fromEvent)
+{
+	var vMsg = ''
+
+	try
+	{
+		if (oElement.tagName == 'INPUT')
+			if (oElement.type == 'hidden' || oElement.type == 'button')
+				return vMsg;
+				
+		switch (oElement.tagName){
+		case 'TEXTAREA':
+		case 'INPUT':
+		{
+			switch (oElement.datatype){
+			case 'date':
+			{
+				ValidateDate(oElement);
+				break;
+			}
+			case 'numeric':
+			{
+				ValidateNumeric(oElement);
+				break;
+			}
+			}
+			if (oElement.Reload == 'true' && oElement.value.length && fromEvent)
+			{
+				SubmitReload();
+				return
+			}	
+			break;
+		}
+		case 'SELECT':
+		{
+			if (oElement.Reload == 'true' && oElement.value.length && fromEvent)
+			{
+				SubmitReload();
+				return
+			}	
+		
+			break;
+		}
+		}
+		
+		if (oElement.Needed == 'true' && !oElement.value.length)
+			if (oElement.title.length)
+				vMsg = vMsg + String.fromCharCode(10) + ' * ' + oElement.title;
+			else
+				vMsg = vMsg + String.fromCharCode(10) + ' * ' + oElement.name;
+	}
+	catch(e)
+	{
+		vMsg = '';
+	}
+	finally
+	{
+		return vMsg
+	}
+}
+
+function CheckFields()
+{
+	var vMsg = new String()
+
+	// Validar campos
+	var oElements = oForm.elements
+	for (x=0; x < oElements.length ; x++)
+		vMsg = vMsg + CheckField(oElements[x]);
+
+	if (vMsg.length)
+	{
+		vMsg = 'El valor para los siguientes campos es inválido:' + vMsg;
+		alert(vMsg);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function SubmitSave()
+{
+	
+	if (CheckFields() != true)
+		return;
+		
+	if (oForm.Validar)
+		if (oForm.Validar() != true) 
+			return;
+		
+	oForm.action = 'vbs' + oForm.action.substr(3);
+	oForm.Accion.value = 'AM';
+	oForm.submit();
+}
+
+function SubmitDelete()
+{
+	
+	if (CheckFields() != true)
+		return;
+		
+	if (oForm.Validar)
+		if (oForm.Validar() != true) 
+			return;
+		
+	oForm.action = 'vbs' + oForm.action.substr(3);
+	oForm.Accion.value = 'B';
+	oForm.submit();
+}
+
+
+function SubmitEstado(oEstado)
+{
+	
+	if (CheckFields() != true)
+		return;
+		
+	if (oForm.Validar)
+		if (oForm.Validar() != true) 
+			return;
+	if (confirm('¿Desea modificar el estado del registro seleccionado?') == false)	
+	   return false;
+	else   
+	   {
+	   oForm.Estado.value = oEstado;
+	   oForm.action = 'vbs' + oForm.action.substr(3);
+	   oForm.Accion.value = 'ME';
+	   oForm.submit();
+	   }
+}
+
+function SubmitReload()
+{
+	
+	if (window.event && oForm.FieldOnFocus)
+		oForm.FieldOnFocus.value = oForm.name + '.' + window.event.srcElement.name;
+	oForm.Accion.value = '';
+	oForm.submit();
+}
+
+function ShowFrame()
+{
+	var oFrameCaller = oForm
+	
+	if (oFrameCaller)
+		oFrameCaller = oFrameCaller.all('fc'+event.srcElement.name);
+	
+	if (oFrameCaller)
+	{
+		event.cancelBubble = true;
+		oFrameCaller.Show();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function doFunctionKey()
+{
+	var oFunction = '';
+	
+	switch (event.keyCode){
+	case 113: //Key F2
+	{
+		if (!ShowFrame())
+			if (oForm.doF2)
+			{
+				event.keyCode = 0;
+				event.cancelBubble = true;
+				oForm.doF2();
+			}
+		break;
+	}
+	case 117: //Key F6
+	{
+		if (oForm.doF6)
+		{
+			event.keyCode = 0;
+			event.cancelBubble = true;
+			oForm.doF6();
+		}
+		break;
+	}
+	case 118: //Key F7
+	{
+		if (oForm.doF7)
+		{
+			event.keyCode = 0;
+			event.cancelBubble = true;
+			oForm.doF7();
+		}
+		break;
+	}
+	case 119: //Key F8
+	{
+		if (oForm.doF8)
+		{
+			event.keyCode = 0;
+			event.cancelBubble = true;
+			oForm.doF8();
+		}
+		break;
+	}
+	}
+
+}
+
+</SCRIPT>
+
+<SCRIPT language="VBScript">
+
+function ValidateNumeric(oField)
+	If Not IsNumeric(oField.value) Then
+		oField.value = ""
+	End If
+End Function
+
+function ValidateDate(oField)
+    if ucase(trim(oField.value)) = "H" then
+	   oField.value = date
+	else
+		if not isdate(oField.value) then
+			oField.value = ""
+		end if
+	end if   
+End function
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

@@ -1,0 +1,324 @@
+<HTML><HEAD><TITLE>Date Picker</TITLE>
+<STYLE>
+<!--
+.hdr  {background:gray;color:#FFFFFF;border-width:1px;border-color:black;border-style:solid}
+.hdrA {background:gray;color:#FFFFFF;border-width:1px;border-color:black;border-style:solid;cursor:hand;}
+.imgA {cursor:hand;}
+.ndt  {position:absolute;width:19;height:19;}
+.bdt  {position:absolute;width:19;height:19;}
+.dt   {position:absolute;width:19;height:19;cursor:hand;}
+.sdt  {position:absolute;width:19;height:19;}
+.Days
+{
+    BACKGROUND-COLOR: #ffffff;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: normal;
+    HEIGHT: 17px;
+    WIDTH: 19px;
+    TEXT-ALIGN: center;
+    VERTICAL-ALIGN: middle;        
+}
+
+.DisabledDay
+{
+    BACKGROUND-COLOR: #ffffff;
+    COLOR: silver;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: normal;
+    HEIGHT: 17px;
+    WIDTH: 19px;
+    TEXT-ALIGN: center;
+    VERTICAL-ALIGN: middle;
+}
+.Day
+{
+    BACKGROUND-COLOR: #ffffff;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: normal;
+    HEIGHT: 17px;
+    WIDTH: 19px;
+    TEXT-ALIGN: center;
+    VERTICAL-ALIGN: middle;
+}
+.ToDay
+{
+    BACKGROUND-COLOR: #ffffff;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: normal;
+    HEIGHT: 17px;
+    WIDTH: 19px;
+    TEXT-ALIGN: center;
+    VERTICAL-ALIGN: middle;
+    border-width:1px;
+    border-color:red;
+    border-style:solid        
+}
+
+.SelectedDay
+{
+    BACKGROUND-COLOR: #aee1ef;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: normal;
+    HEIGHT: 17px;
+    WIDTH: 19px;
+    TEXT-ALIGN: center;
+    VERTICAL-ALIGN: middle;
+}
+.DayActionOver
+{
+    COLOR: red;
+    CURSOR: hand;
+}
+
+
+ //-->
+</STYLE>
+</HEAD>
+
+<script FOR="document" EVENT="onkeydown()">
+<!--
+ActionKey(window.event);
+//-->
+</script>
+
+<BODY BGCOLOR=#FFFFFF TEXT=#000000 LINK=#990000 VLINK=#990000 ALINK=#990000" onLoad="ShowCal();">
+
+<BASEFONT FACE="Arial,Helvetica,Geneva,Swiss,Sans Serif">
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=1 style="border-width:2px;border-color:black;border-style:solid;font:8pt arial;background:white;">
+<TR><TD HEIGHT=20 COLSPAN="2">
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=1 HEIGHT=20 style="font: 8pt arial;"><TR>
+          <TD WIDTH=16 ID=PrevDiv CLASS="hdrA"><IMG ID=Prev SRC="prev.gif" onClick="PC();" ALT="Mostrar mes anterior" width="16" height="16"></TD>
+          <TD WIDTH=103 ALIGN=MIDDLE CLASS="hdr"><SPAN ID=MonthTitle>Nov 2001</SPAN>&nbsp;&nbsp;<IMG CLASS="imgA" ID=Next SRC="menosx9.gif" onClick="PY();" ALT="Año anterior" width="9" height="9">&nbsp;<IMG CLASS="imgA" ID=Next SRC="masx9.gif" onClick="NY();" ALT="Año siguiente" width="9" height="9"></TD>
+
+          <TD WIDTH=16 ID=NextDiv CLASS="hdrA"><IMG ID=Next SRC="next.gif" onClick="NC();" ALT="Mostrar próximo mes" width="16" height="16"></TD>
+</TR></TABLE>
+</TD></TR>
+<TR><TD COLSPAN="2">
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=1>
+<TR><TD><table BORDER=0 CELLPADDING=0 CELLSPACING=1 style="border-bottom: #000000 1px solid;">
+<tr><td class="Days"/>D<td class="Days"/>L<td class="Days"/>M<td class="Days"/>M<td class="Days"/>J<td class="Days"/>V<td class="Days"/>S</tr>
+</table>
+</TD></TR>
+<TR><TD ALIGN=MIDDLE STYLE="position:relative;">
+<DIV ID=BKIMG1 style="border-bottom: #000000 1px solid;">
+<table BORDER=0 CELLPADDING=0 CELLSPACING=1>
+<tr>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d1">1</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d2">2</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d3">3</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d4">4</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d5">5</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d6">6</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d7">7</SPAN>
+</tr>
+<tr>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d8">1</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d9">2</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d10">3</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d11">4</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d12">5</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d13">6</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d14">7</SPAN>
+</tr>
+<tr>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d15">1</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d16">2</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d17">3</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d18">4</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d19">5</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d20">6</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d21">7</SPAN>
+</tr>
+<tr>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d22">1</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d23">2</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d24">3</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d25">4</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d26">5</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d27">6</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d28">7</SPAN>
+</tr>
+<tr>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d29">1</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d30">2</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d31">3</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d32">4</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d33">5</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d34">6</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d35">7</SPAN>
+</tr>
+<tr>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d36">1</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d37">2</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d38">3</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d39">4</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d40">5</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d41">6</SPAN>
+  <td class="Day"/><SPAN onmouseover="DayOver(this,1);" onmouseout="DayOver(this,0);" onclick="SelDay(this);" ID="d42">7</SPAN>
+</tr>
+
+
+
+</table>
+</DIV>
+</TD></TR>
+</TABLE>
+</TD></TR>
+<!--<TR><TD WIDTH="50%" HEIGHT=20 ALIGN=MIDDLE><A ID="cmdHoy" STYLE="color: #336699" HREF="javascript:TDC()" ALT="Ir al día de hoy">Hoy</SPAN></TD><TD WIDTH="50%" HEIGHT=20 ALIGN=MIDDLE><A STYLE="color: #336699" HREF="javascript:CC()" ALT="Cerrar calendario">Cancelar</SPAN></TD></TR>-->
+<TR><TD WIDTH="50%" HEIGHT=20 ALIGN=MIDDLE><A ID="cmdHoy" STYLE="color: #336699" HREF="javascript:TDC()" ALT="Ir al día de hoy">Hoy</SPAN></TD><TD WIDTH="50%" HEIGHT=20 ALIGN=MIDDLE><A STYLE="color: #336699" HREF="javascript:window.close()" ALT="Cerrar calendario">Cerrar</SPAN></TD></TR>
+</TABLE>
+
+<SCRIPT>
+<!--
+
+var wp=window.parent;
+var cf=wp.document.all.CalFrame;
+var oDateField;
+var vMonth = 1;
+var vYear = 1970;
+var vSelectedDate;
+var arrMonths = new Array('Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic');
+
+var vDate = new Date(vMonth + '/1/' + vYear);
+
+function ActionKey(oEvent)
+{	
+	if (oEvent)
+	{
+		switch (oEvent.keyCode)
+		{
+		case 27:
+			CC();
+			break;
+		case 33:
+			PC();
+			oEvent.keyCode = 0;
+			break;
+		case 34:
+			NC();
+			oEvent.keyCode = 0;
+			break;
+		default:
+			return oEvent.keyCode;
+		}
+	}
+}
+
+function CC() {}//cf.style.display="none";}
+
+function PY() {
+	vDate.setYear(vDate.getYear() - 1);
+	ShowCal();
+}
+
+function NY() {
+	vDate.setYear(vDate.getYear() + 1);
+	ShowCal();
+}
+
+function PC() {
+	vDate.setMonth(vDate.getMonth() - 1);
+	ShowCal();
+}
+
+function NC() {
+	vDate.setMonth(vDate.getMonth() + 1);
+	ShowCal();
+}
+
+function TDC() {
+	var vToDay = new Date();
+	
+	vDate.setMonth(vToDay.getMonth());
+	vDate.setYear(vToDay.getYear());
+	ShowCal();
+}
+
+function ShowCal()
+{
+	var FirstOfMonth = vDate.getDay();
+	var i;
+	var iDate = new Date(vDate.getVarDate());
+	var vToDay = new Date();
+	var vParentStyle;
+	
+	MonthTitle.innerText = arrMonths[vDate.getMonth()] + ' ' + vDate.getYear();
+	
+	for (i = 1; i <= 42; i++)
+	{
+		vParentStyle = false;
+		
+		if (i > FirstOfMonth && iDate.getMonth() == vDate.getMonth())
+		{
+			document.all('d' + (i)).innerText = iDate.getDate();
+			document.all('d' + (i)).title = GetDateAR(iDate);
+			
+			if (vSelectedDate && vParentStyle == false)
+				if (GetDateAR(iDate) == GetDateAR(vSelectedDate))
+				{
+					document.all('d' + (i)).parentElement.className = 'SelectedDay';
+					vParentStyle = true;
+				}
+			
+			if(GetDateAR(iDate) == GetDateAR(vToDay) && vParentStyle == false)
+			{
+				document.all('d' + (i)).parentElement.className = 'ToDay';			
+					vParentStyle = true;
+			}
+			iDate.setDate(i - FirstOfMonth + 1);
+
+		}
+		else
+		{
+			document.all('d' + (i)).innerText = '';
+			document.all('d' + (i)).title = ''
+		}
+
+		if (vParentStyle == false)
+		{
+			document.all('d' + (i)).parentElement.className = 'Day';
+		}
+
+	}
+	cmdHoy.focus();
+}
+
+function GetDateAR(oDate)
+{
+	return oDate.getDate() + '/' + (oDate.getMonth() + 1) + '/' + oDate.getYear();
+}
+
+function DayOver(oDay, vOver)
+{
+	if (vOver == 0)
+	{
+		oDay.className = '';
+	}
+	else
+	{
+		oDay.className = 'DayActionOver';
+	}
+
+}
+
+function SelDay(oDay)
+{// oDateField = oDay.title
+	window.opener.frmaltausuario.fechadenacimiento.value = oDay.title;
+	
+	CC();
+}
+
+//-->
+</SCRIPT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,155 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="init_NavArea()" />
+
+<SCRIPT language="JScript">
+
+var IMAGES = "/library/flyoutmenu/images/"
+//var MENU_WIDTH = 100%
+//var MENU_BORDER_COLOR = '#999999'
+
+var MENU_MOUSEOVER_LEFT_COLOR = 'gray'
+var MENU_MOUSEOVER_RIGHT_COLOR = 'gray'
+var MENU_MOUSEOVER_BOTTOM_COLOR = 'gray'
+var MENU_MOUSEOVER_TOP_COLOR = 'gray'
+
+var MENU_BACKGROUND_COLOR	= '#F1F1F1'
+var MENU_CURRENTPAGE_COLOR	= '#ffffff'
+var MENU_MOUSEOVER_COLOR = 'silver'
+var MENU_MOUSEDOWN_COLOR = '#8DC63F'
+var MENU_SHADOW_COLOR		= '#666666'
+var FLYOUT_DELAY = 200
+var KILL_DELAY = 300
+var SCROLL_DELAY = 35
+var SCROLL_PXPERSEC = 150
+var MIN_FLYOUT_WIDTH = 100
+var MAX_FLYOUT_WIDTH = 410
+
+var oDocument = window.document
+
+function init_NavArea()
+{
+
+	var items = this.all.tags('TD')
+	var i
+	var lhref = ''
+
+	//alert(oDocument.mtModulo);
+	
+	if (oDocument.mtModulo) {
+	    
+		lhref = getModulo(oDocument.mtModulo);
+	}
+
+	
+	
+	for (i=0; i<items.length; i++) {
+	    ;
+		var item = items[i]
+		if (item.className == 'TopActionMenu') {
+		    
+			item.attachEvent("onmouseover", btn_over)
+			item.attachEvent("onmouseout", btn_out)
+			item.attachEvent("onmousedown", btn_down)
+			item.attachEvent("onmouseup", btn_up)
+
+			var anchors = item.all.tags('A')
+			if (anchors.length > 0)
+			{
+				var anchor = anchors.item(0)
+				var ahref = getModulo(anchor.href)
+				
+				if (ahref == lhref)
+				{
+					item.style.borderColor = MENU_BORDER_COLOR
+					item.style.backgroundColor = MENU_CURRENTPAGE_COLOR
+				}
+			}
+			
+			item.defaultBorder = item.style.borderColor
+			item.defaultBackground = item.style.backgroundColor
+			
+		}
+	}
+
+}
+
+function getModulo(href)
+{
+	href = href.toLowerCase();
+	var slash = href.lastIndexOf("/");
+	if (-1 != slash) 
+	{
+		href = href.substr(slash + 1);
+		if (href == '')
+			href = 'default';
+	}
+	return href;
+}
+
+function btn_over()
+{
+	var e = whichItem()
+	if (e.contains(window.event.fromElement))
+		return
+
+        //e.style.borderColor = MENU_BORDER_COLOR
+        e.style.borderLeftWidth = '1px'
+        e.style.borderTopWidth = '1px'
+        e.style.borderBottomWidth = '0px'
+        e.style.borderRightWidth = '0px'
+        e.style.borderBottomColor = MENU_MOUSEOVER_BOTTOM_COLOR
+        e.style.borderTopColor = MENU_MOUSEOVER_TOP_COLOR
+        e.style.borderLeftColor = MENU_MOUSEOVER_LEFT_COLOR
+        e.style.backgroundColor = MENU_MOUSEOVER_COLOR
+		e.style.color = 'white'
+}
+
+function btn_out()
+{
+	var e = whichItem()
+	var te = window.event.toElement
+	if (te)
+		if (e.contains(te))
+			return
+
+	e.style.borderColor = e.defaultBorder
+	e.style.backgroundColor = e.defaultBackground
+
+	e.style.color = 'black'
+	e.style.borderLeftWidth = '0px'
+	e.style.borderTopWidth = '0px'
+	e.style.borderBottomWidth = '1px'
+	e.style.borderRightWidth = '1px'
+}
+
+function whichItem()
+{
+	var e = event.srcElement
+	while (e.tagName != "TD")
+		e = e.parentElement
+	return e
+}
+
+function btn_down()
+{
+	var e = whichItem()
+	e.style.backgroundColor = MENU_MOUSEDOWN_COLOR
+
+}
+
+function btn_up()
+{
+	if ((event.button & 1) == 0)
+		return;
+	var e = whichItem()
+	e.style.backgroundColor = MENU_MOUSEOVER_COLOR
+	var a = e.all.tags("A")
+	if (a.length > 0)
+		top.location.href = a[0].href
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

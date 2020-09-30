@@ -1,0 +1,392 @@
+BODY
+{
+
+SCROLLBAR-FACE-COLOR: #00C64A; 
+SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; 
+SCROLLBAR-SHADOW-COLOR: #ffffff; 
+SCROLLBAR-3DLIGHT-COLOR: #ffffff; 
+SCROLLBAR-ARROW-COLOR: #ffffff; 
+SCROLLBAR-TRACK-COLOR: #ffffff;
+SCROLLBAR-DARKSHADOW-COLOR: #999999;
+margin:0;
+}
+
+.Titulo
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 18px;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-STYLE: italic;
+    FONT-FAMILY: Verdana, Tahoma, Arial, Helvetica;
+    HEIGHT: 29px;
+    BACKGROUND-COLOR: gray;
+    TEXT-ALIGN: left;
+}
+.ContentArea
+{
+   /* BORDER-RIGHT: gray 1px solid;*/
+    PADDING-RIGHT: 10px;
+    PADDING-LEFT: 10px;
+    FONT-SIZE: 12px;
+    PADDING-BOTTOM: 10px;
+    WIDTH: 640px;
+    PADDING-TOP: 5px;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Verdana, Tahoma, Arial, Helvetica;
+    height:590px;
+}
+FORM
+{
+    MARGIN: 0px;
+}
+A
+{
+    TEXT-DECORATION: underline;
+}
+TD
+{
+    VERTICAL-ALIGN: top;
+}
+TEXTAREA
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Arial
+}
+IMG
+{
+    BORDER-RIGHT: 0px;
+    BORDER-TOP: 0px;
+    BORDER-LEFT: 0px;
+    BORDER-BOTTOM: 0px;
+    ALIGN: middle
+}
+.NavBoxAction
+{
+    COLOR: black;
+    TEXT-DECORATION: none;
+}
+.NavBoxAction:hover
+{
+    COLOR: gray;
+}
+.NavBoxHeader1
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #636531;
+    TEXT-ALIGN: center;
+}
+.NavBox1
+{
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    BORDER-BOTTOM: #636531 1px solid;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #cecf9c;
+}
+.NavBoxDetail1
+{
+    PADDING-LEFT: 4px;
+    HEIGHT: 20px;
+}
+.NavBoxSection1
+{
+    PADDING-LEFT: 4px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: bottom;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #cecf9c;
+    TEXT-ALIGN: left;
+}
+.NavBoxHeader2
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #000000;
+    TEXT-ALIGN: center;
+}
+.NavBox2
+{
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    BORDER-BOTTOM: #ff9a00 1px solid;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #ffcf63;
+}
+.LogInBox
+{
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #8DC63F;
+    
+}
+.NavBoxDetail2
+{
+    PADDING-LEFT: 4px;
+    HEIGHT: 20px;
+}
+.NavBoxSection2
+{
+    PADDING-LEFT: 4px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: bottom;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #ffcf63;
+    TEXT-ALIGN: center;
+}
+.SectionDetail
+{
+    BACKGROUND-COLOR: #dee1ef
+}
+.SectionHeader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: #7d8bd7;
+    TEXT-ALIGN: left;
+}
+.ListDetail1
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #dee1ef;
+}
+.ListDetail2
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #be9dc8;
+}
+.ListHeader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: #9a6fa7;
+    TEXT-ALIGN: left;
+}
+.ListAccion
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: gray;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    TEXT-ALIGN: right;
+    TEXT-DECORATION: none;
+}
+.ListAccion:hover
+{
+    COLOR: black;
+}
+.FieldName
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10pt;
+    VERTICAL-ALIGN: top;
+    FONT-FAMILY: "Tahoma";
+    TEXT-ALIGN: left;
+}
+.Texto8
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+}
+.AccionBlack
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10pt;
+    VERTICAL-ALIGN: bottom;
+    COLOR: black;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    TEXT-ALIGN: right;
+    TEXT-DECORATION: none;
+}
+.AccionBlack:hover
+{
+    COLOR: red;
+}
+.FieldName8
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: top;
+    FONT-FAMILY: "Tahoma";
+    TEXT-ALIGN: left;
+}
+.SectionHeader8
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #7d8bd7;
+    TEXT-ALIGN: left;
+}
+.ListDetail81
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #dee1ef;
+}
+.ListDetail82
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #000000;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #be9dc8;
+}
+.ListHeader8
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    VERTICAL-ALIGN: middle;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    HEIGHT: 18px;
+    BACKGROUND-COLOR: #9a6fa7;
+    TEXT-ALIGN: left;
+}
+.ActionBoxHeader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    COLOR: #ffffff;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+    BACKGROUND-COLOR: #000000;
+}
+.ActionBox
+{
+    FONT-SIZE: 8pt;
+    FONT-FAMILY: Tahoma, Arial, Helvetica;
+}
+.LinkedData
+{
+    CURSOR: hand;
+    TEXT-DECORATION: underline;
+}
+.LinkedDataBox
+{
+    COLOR: white;
+    TEXT-DECORATION: none;
+}
+.LinkedDataBox:hover
+{
+    COLOR: #ffcf63;
+}
+
+/*Diego */
+.FooterNotes
+{
+	font-family: Arial, Helvetica;
+	font-size: 10px;
+	height:17px; 
+	padding: 0px;
+	vertical-align:middle;
+	text-align:center;
+	
+}
+.FooterNotes a 
+{
+	color: black;
+	text-decoration: none;
+}
+.FooterNotes a:hover 
+{
+	color: gray;
+	text-decoration: none;
+}
+.RowFormBoxBody
+{background-color: silver;
+ 
+color:white;
+font-weight:bold;
+	
+	}
+    .RowFormBoxBody td {
+      
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+	
+.FooterNotes2{
+	font-family: Arial, Helvetica;
+	font-size: 10px;
+	height:17px; 
+	padding-left: 10px;
+	vertical-align:middle;
+	color: white; 
+	background-color:#8DC63F;
+}
+.FooterNotes3
+{
+	font-family: Arial, Helvetica;
+	font-size: 10px;
+	height:17px; 
+	padding: 0px;
+	vertical-align:middle;
+	text-align:center;
+	color: white; 
+	background-color:#000000;
+
+}
+.mensaje
+{
+	width:400px;
+	border:0px; 
+	margin:0px;
+	padding:0px; 
+	background-color:#8DC63F;
+	}
+
+.numticket{
+position:relative;
+top:60px;
+left:5px;
+overflow:visible;
+}
+
+.defaultContent
+{
+	padding:5px; 
+	BORDER: gray 1px solid; 
+	font-size: 13px;
+	padding:0px;
+	margin:0px;
+	text-align:center; 
+	border-color:#CCCCCC;
+	width:780px;
+	}
+	
+#adioscontent {
+height:635px;
+width:775px;
+}

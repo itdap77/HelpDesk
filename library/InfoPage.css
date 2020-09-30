@@ -1,0 +1,46 @@
+td
+{
+	vertical-align: top;
+}
+
+.InfoTitle
+{
+	width:500px;
+	font: bold 20px Verdana, Tahoma, Arial, Helvetica;
+	margin: 5px 3px 5px 3px;
+	color:#6698CB;
+	text-align:left;
+	border-bottom: #6698CB solid 1px;
+}
+
+.InfoSubtitle
+{
+	font: bold 12px Verdana, Tahoma, Arial, Helvetica;
+	margin: 2px 0px 1px 0px;
+	color:#6698CB;
+}
+
+.InfoData
+{
+	font: 11px Verdana, Tahoma, Arial, Helvetica;
+	margin: 0px;
+}
+
+.InfoContent
+{
+	width:500px;
+	margin:0px 5px 5px 5px;
+}
+.InfoContent td
+{
+	width:50%;
+	spacing:1px;
+	padding:2px;
+}
+
+.InfoButton
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	width:80px;
+}

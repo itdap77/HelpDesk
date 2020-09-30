@@ -1,0 +1,12 @@
+<%
+' FileName="Connection_ado_conn_string.htm"
+' Type="ADO"
+' HTTP="false"
+' Catalog=""
+' Schema=""
+
+'MM_HelpDesk_STRING = "Provider=SQLOLEDB.1;Persist Security Info=False;User ID=itdap;password=power125;Initial Catalog=HelpDesk;Data Source=190.210.98.74,2433 " 
+
+MM_HelpDesk_STRING = "Server=tcp:itdapsql.database.windows.net,1433;Initial Catalog=itdaphelpdeskdb;Persist Security Info=False;User ID=itdapadmin;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+%>

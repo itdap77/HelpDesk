@@ -1,0 +1,295 @@
+.Form
+{
+	margin: 0px;
+	behavior: url("library/FormArea.htc");
+}
+.Form TABLE
+{
+	font-size:11px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+}
+.Form INPUT
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+}
+.Form TEXTAREA
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+}
+.Form SELECT
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	width:100px;
+}
+
+.FormBlockHeader
+{
+	cursor:hand;
+	behavior: url("library/Formblock.htc");
+}
+
+.FormBlockHidden
+{
+	font-size:11px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	text-align:center;
+	color:#4682B4;
+	cursor:hand;
+	behavior: url("library/Formblock.htc");
+}
+
+.FormBlockVisible
+{
+}
+
+.FormBlockImg
+{
+	width:20px;
+	vertical-align:middle;
+	text-align:center;
+	padding:0px;
+}
+
+.FormBlockImg IMG
+{
+	border: 0px;
+	width:18px;
+	height:18px;
+}
+
+.FormSection
+{
+	width:610px;
+	height:22px; 
+	font: bold 11px Verdana, Tahoma, Arial, Helvetica;
+	margin: 10px 3px 5px 3px;
+	background: #6698CB; 
+	color:white; 
+	border: 0px
+	vertical-align:middle;
+	text-align:center;
+}
+
+.FormActions
+{
+	width:610px; 
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	margin: 0px 3px 5px 3px; 
+	padding:1px; 
+	background:white; 
+	border:black 1px solid; 
+	vertical-align:middle;
+}
+
+.FormTable
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	margin-left:5px; 
+	margin-right:5px; 
+}
+.FormTable td
+{
+	padding-left:5px; 
+	padding-right:5px;
+}
+
+
+.FormBoxHeader
+{
+	font: bold 11px Verdana, Tahoma, Arial, Helvetica; 
+	width:100%; 
+	background:silver; 
+	text-align:left; 
+	vertical-align:middle; 
+	border: solid;
+    margin-top: 5px;
+    color: #FFFFFF;
+    border-width: 1px 1px 0px; border-color: gray gray black;
+    background-color:#8DC63F;
+    
+}
+
+.FormBoxHeader td
+{
+	padding-left:1px; 
+	padding-right:1px;
+}
+
+.FormBoxBody
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica; 
+	width:100%; 
+	background:white; 
+	border-right: solid 1px gray; 
+	border-left: solid 1px gray; 
+	border-bottom: solid 1px gray; 
+	padding: 1px 1px;
+	vertical-align:middle;
+    margin: 0px 0px 5px;
+    border: gray; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
+  
+}
+
+.FormBoxListEvenRow
+{
+	background: white;
+	padding: 0px;
+	height:16px;
+	vertical-align:middle;	
+}
+.FormBoxListOddRow
+{
+	background: #E7E7E7;
+	padding: 0px;
+	height:16px;
+	vertical-align:middle;
+}
+
+.FormBoxBody TD
+{
+	height: 16px;
+		vertical-align:middle;
+}
+
+.FormHiddenTable
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	margin:0px; 
+	width:100%; 
+	background:white; 
+	padding: 0px;
+	vertical-align:middle;
+}
+.FormHiddenTable TD
+{
+	height: 18px;
+}
+
+.FormBoxList
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	margin-bottom:5px; 
+	width:100%; 
+	background:white; 
+	border-right: solid 1px gray; 
+	border-left: solid 1px gray; 
+	border-bottom: solid 1px gray; 
+	vertical-align:middle;
+}
+.FormBoxListHighlight
+{		
+    padding: 0px;
+	height:16px;
+	vertical-align:middle;
+	background:#00C64A; 
+	cursor:hand;
+
+}
+
+.FormBoxListHeader
+{
+	font:Bold 10px Verdana, Tahoma, Arial, Helvetica;
+	width:100%; 
+	background:white; 
+	border-bottom: solid 1px gray; 
+	vertical-align:middle;
+}
+.FormBoxList a
+{
+	font:10px Verdana, Tahoma, Arial, Helvetica;
+	color: #4682B4;
+}
+
+
+.FormButton
+{
+	font-size:10px; 
+	font-family: Verdana, Tahoma, Arial, Helvetica;
+	width:80px;
+}
+
+.FormFrameCaller
+{
+	margin: 0px;
+	padding: 0px;
+	height:17px;
+	width:22px;
+	vertical-align: middle;
+	behavior: url("library/FrameCaller.htc");
+	cursor:hand;
+}
+
+.FormFrameCal
+{
+	position:absolute;
+	width:148;
+	height:181;
+	z-index=100;
+	behavior: url("library/Frames.htc");
+}
+
+.FormFrameBsq
+{
+	position:absolute;
+	width:400;
+	height:160;
+	z-index=100;
+	behavior: url("library/Frames.htc");
+}
+
+.FormTabs
+{
+	margin-top:10px;
+	width:100%;
+	padding:0px 2px 0px 0px;
+}
+.FormTabsBody
+{
+	border:1px solid black;
+	width:100%;
+	padding: 5px;
+}
+.FormTabText
+{
+	vertical-align:middle;
+	text-align:center;
+}
+.FormTab
+{
+	height:20px;
+	background-color:#D6D6D6;
+	vertical-align:middle;
+	width:100%;
+}
+.FormTab a
+{
+	color:black;
+	font: 11px Verdana, Tahoma, Arial, Helvetica;
+	text-decoration:none;
+}
+.FormTab a:hover
+{
+	color:gray;
+}
+.FormTabSelected
+{
+	height:20px;
+	background-color:#6698CB;
+	vertical-align:middle;
+	width:100%;
+}
+.FormTabSelected a
+{
+	vertical-align:middle;
+	color:white;
+	font: bold 11px Verdana, Tahoma, Arial, Helvetica;
+	text-decoration:none;
+}

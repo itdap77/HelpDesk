@@ -1,0 +1,74 @@
+.TopMenuArea
+{
+    BACKGROUND-COLOR: gray;
+    COLOR: white;
+    VERTICAL-ALIGN: middle;
+    width: 640px;
+	height: 29px;
+	
+}
+.MainTopMenuArea
+{
+    BACKGROUND-COLOR: gray;
+    COLOR: white;
+    VERTICAL-ALIGN: middle;
+    width: 780px;
+		height: 29px;
+}
+.TopMenu
+{
+    COLOR: silver;
+    FONT-FAMILY: Verdana, Tahoma, Arial, Helvetica;
+    FONT-SIZE: 11px;
+	TEXT-ALIGN: right;
+	VERTICAL-ALIGN: bottom;
+	padding-bottom: 3px;
+	padding-right: 5px;
+	behavior: url("library/MenuArea.htc");
+}
+.TopMenu a
+{
+    COLOR: silver;
+    FONT-FAMILY: Verdana, Tahoma, Arial, Helvetica;
+    FONT-SIZE: 11px;
+	text-decoration: none;
+	cursor: hand;
+}
+.TopMenu a:hover
+{
+    COLOR: white;
+	text-decoration: none;
+}
+.TopMenuList
+{
+    BACKGROUND-COLOR: #F1F1F1;
+	position: absolute;
+	border-top: silver 1px solid;
+	border-bottom: gray 1px solid;
+	border-left: silver 1px solid;
+	border-right: gray 1px solid;
+	padding: 2px;
+}
+.TopMenuList a
+{
+    COLOR: black;
+    FONT-FAMILY: Verdana, Tahoma, Arial, Helvetica;
+    FONT-SIZE: 11px;
+	text-decoration: none;
+	cursor: hand;
+}
+.TopMenuList a:hover
+{
+    COLOR: black;
+	text-decoration: none;
+}
+.TopMenuList td  
+{
+	border-color: #F1F1F1;
+	border-width: 1px;
+	border-style: solid;
+	font-family: Verdana, Arial, Helvetica;
+	font-size: 11px;
+	padding: 1px 10px 2px 6px;
+	cursor: hand;
+}

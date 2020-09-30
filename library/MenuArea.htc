@@ -1,0 +1,288 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:METHOD NAME="HideMenuLater" />
+
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="init_MenuArea()" />
+
+<SCRIPT language="JScript">
+
+var MENU_BORDER_COLOR		= '#999999'
+var MENU_MOUSEOVER_COLOR	= '#cccccc'
+var MENU_MOUSEDOWN_COLOR	= '#999999'
+
+var isMenuOnFocus = false;
+var x = 0;
+var xFar = 0;
+var y = 0;
+
+var oDocument = window.document
+
+if (oDocument.TotalMenu == null)
+{
+	oDocument.TotalMenu = 0;
+	oDocument.arrMenuInfo = new Array(10);
+	oDocument.LaterMenuHide = '';
+	oDocument.TimeoutID = 0;
+}
+
+function init_MenuArea()
+{
+
+	var i
+	var x
+	
+	//Attachar eventos a Elementos de Menu
+	var items = this.all.tags('A')
+	for (i=0; i<items.length; i++)
+	{
+		var item = items[i]
+		
+		item.attachEvent("onmouseover", ShowMenu)
+		item.attachEvent("onmouseout", initHideMenuLater)
+	}
+	
+	//Attachar eventos a Lista de Menu
+	var items = oDocument.all.tags('DIV')
+	for (i=0; i<items.length; i++)
+	{
+		var list = items[i]
+		
+		if (list.className == 'TopMenuList')
+		{		
+			list.attachEvent("onmouseover", ShowMenu)
+			list.attachEvent("onmouseout", initHideMenuLater)			
+
+			//Attachar eventos a Elementos de Lista de Menu
+			var elements = list.all.tags('TD')
+			for (x=0; x<elements.length; x++)
+			{
+				var element = elements[x]
+
+				element.defaultBorder = element.style.borderColor
+				element.defaultBackground = element.style.backgroundColor
+				
+				element.attachEvent("onmouseover", btn_over)
+				element.attachEvent("onmouseout", btn_out)
+				element.attachEvent("onmousedown", btn_down)
+				element.attachEvent("onmouseup", btn_up)
+			}
+		}
+	}
+
+}
+
+function whichMenu()
+{
+	var e = event.srcElement
+	while (e.id.substr(0,3) != 'mnu' && e.id.substr(0,3) != 'lst')
+		e = e.parentElement
+	return e.id.substr(3)
+}
+
+function HideMenuLater()
+{
+	HideMenu(oDocument.LaterMenuHide);
+}
+		
+
+function RegisterMenu(menuName)
+{
+	var vFound = false;
+
+	
+	for (i = 0; i < oDocument.TotalMenu; i++) 
+	{
+		if (oDocument.arrMenuInfo[i] = menuName)
+		{
+			vFound = true;
+			break;
+		}
+	}
+	if (!vFound)
+	{
+		oDocument.arrMenuInfo[i] = menuName;
+		oDocument.TotalMenu += 1;
+	}
+}
+
+function GetAbsoluteTop(elem)
+{
+	var topPosition = 0;
+
+	while (elem)
+	{
+		if (elem.tagName == 'BODY')
+		{
+			break;
+		}
+		topPosition += elem.offsetTop;
+		elem = elem.offsetParent;
+	}
+	return topPosition;
+}
+
+function GetAbsoluteLeft(elem)
+{
+	var leftPosition = 0;
+
+	while (elem)
+	{
+		if (elem.tagName == 'BODY')
+		{
+			break;
+		}
+		leftPosition += elem.offsetLeft;
+		elem = elem.offsetParent;
+	}
+
+	return leftPosition;
+}
+
+function ShowMenu()
+{
+	var MenuName = whichMenu()
+	var oContent = oDocument.all.item('lst' + MenuName);
+	var oMenu = oDocument.all.item('mnu' + MenuName);
+	
+	if (oContent)
+	{
+		if (MenuName == oDocument.LaterMenuHide && oDocument.TimeoutID)
+		{
+			window.clearTimeout(oDocument.TimeoutID);
+		}
+			
+		if (oContent.style.display == 'none')
+		{
+	
+			// Oculta los menues registrados antes de mostrar
+			for (i = 0; i < oDocument.TotalMenu; i++) 
+			{
+				HideMenu(oDocument.arrMenuInfo[i]);
+			}
+
+	
+			y = GetAbsoluteTop(oMenu) + 18;
+			x = GetAbsoluteLeft(oMenu);
+			xFar = x + oMenu.offsetWidth;
+			
+			oContent.style.top = y;
+			
+			oContent.style.left = x;
+
+			oDocument.isMenuActive = true;
+			oContent.style.display = '';
+			oContent.style.zIndex = 99;
+			
+			// acomoda el menu si se excede del borde
+			if ((x + oContent.offsetWidth) > oDocument.all.item('MainTable').offsetWidth)
+				oContent.style.left = oDocument.all.item('MainTable').offsetWidth - oContent.offsetWidth - 1;		
+			
+			// Registra el nuevo menu
+			RegisterMenu(MenuName);
+			
+		}
+	}
+	else
+	{
+		// Oculta los menues registrados antes de mostrar
+		for (i = 0; i < oDocument.TotalMenu; i++) 
+		{
+			HideMenu(oDocument.arrMenuInfo[i]);
+		}	
+	}
+}
+
+function HideMenu(MenuName)
+{
+	var oContent = oDocument.all('lst' + MenuName);
+
+	oDocument.LaterMenuHide = '';
+	
+	if(oContent)
+	{
+		y = 0;
+		x = 0;
+		xFar = 0;
+		oDocument.isMenuActive = false;
+		oContent.style.display = 'none';
+	}
+}
+
+function initHideMenuLater()
+{
+	var MenuName = whichMenu()
+
+	var oContent = oDocument.all('lst' + MenuName);
+	
+	if (oContent)
+	{
+		if (oContent.style.display != 'none')
+		{
+			currY = event.clientY + oDocument.body.scrollTop;
+			currX = event.clientX + oDocument.body.scrollLeft;
+			
+			if (oDocument.isMenuActive == true && (currY > (y + 5) || currY < (y - 10) || currX < x || currX > xFar))
+			{
+				oDocument.LaterMenuHide = MenuName
+				oDocument.TimeoutID = window.setTimeout(this.id + '.HideMenuLater()',1000,'JScript');
+			}
+			else
+			{
+				// oWindow.event.cancelBubble = true;
+				return; 		
+			}
+		}
+	}
+}
+
+function btn_over()
+{
+	var e = whichItem()
+	if (e.contains(window.event.fromElement))
+		return
+
+		e.style.borderColor = MENU_BORDER_COLOR
+		e.style.backgroundColor = MENU_MOUSEOVER_COLOR
+}
+
+function btn_out()
+{
+	var e = whichItem()
+	var te = window.event.toElement
+	if (te)
+		if (e.contains(te))
+			return
+
+	e.style.borderColor = e.defaultBorder
+	e.style.backgroundColor = e.defaultBackground
+}
+
+function whichItem()
+{
+	var e = event.srcElement
+	while (e.tagName != "TD")
+		e = e.parentElement
+	return e
+}
+
+function btn_down()
+{
+	var e = whichItem()
+	e.style.backgroundColor = MENU_MOUSEDOWN_COLOR
+}
+
+function btn_up()
+{
+	if ((event.button & 1) == 0)
+		return;
+	var e = whichItem()
+	e.style.backgroundColor = MENU_MOUSEOVER_COLOR
+	var a = e.all.tags("A")
+	if (a.length > 0)
+		top.location.href = a[0].href
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

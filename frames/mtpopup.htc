@@ -1,0 +1,129 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:METHOD NAME="SubmitQuery" />
+<PUBLIC:METHOD NAME="CloseFrame" />
+<PUBLIC:METHOD NAME="PrevPage" />
+<PUBLIC:METHOD NAME="NextPage" />
+<PUBLIC:METHOD NAME="SelResult" />
+<PUBLIC:ATTACH EVENT="onkeydown" ONEVENT="ActionKey()" />
+
+<SCRIPT language="JScript">
+
+var oForm = window.document.all(this.name)
+var wp = window.parent
+var returnForm
+var returnElement
+
+function ActionKey()
+{	
+	switch (event.keyCode)
+	{
+	case 13:
+		SubmitQuery();
+		break;
+	case 27:
+		CloseFrame();
+		break;
+	case 33:
+		PrevPage();
+		break;
+	case 34:
+		NextPage();
+		break;
+	default:
+		return event.keyCode;
+	}
+}
+
+function SubmitQuery()
+{
+	oForm.PageNumber.value = 1;
+	this.submit();
+}
+
+function ClearForm()
+{
+	var oElements = this.elements.tags('INPUT')
+
+	for (x=0; x < oElements.length ; x++)
+	{
+		if (oElements[x].type != 'hidden')
+		{
+			oElements[x].value = '';
+		}
+	}
+}
+
+function NextPage()
+{
+	oForm.PageNumber.value++;
+	this.submit();
+}
+
+function PrevPage()
+{
+	if (oForm.PageNumber.value != 1)
+	{
+		oForm.PageNumber.value --;
+		this.submit();
+	}
+}
+
+function CloseFrame()
+{
+	var dFrame = wp.document.all(oForm.all('FrameName').value)
+
+	setReturnElements();
+	
+	dFrame.Hide();
+
+	if (oForm.PageNumber.value != 0)
+	{
+		ClearForm();
+		oForm.submit();
+	}
+
+	if (returnElement)
+	{
+		returnElement.focus();
+		if (returnElement.tagName == 'INPUT')
+			returnElement.select();		
+	}
+}
+
+function SelResult()
+{
+	var oResult = event.srcElement
+	
+	setReturnElements();
+
+	returnElement.value = oResult.id.substr(1);
+	
+	if (returnForm.BuscarReturn)
+		returnForm.BuscarReturn(returnElement);
+		
+	CloseFrame();
+}
+
+function setReturnElements()
+{
+	if (oForm.DataField.value.length)
+	{
+		var vDot = oForm.DataField.value.lastIndexOf(".");
+		if (vDot != -1) 
+		{
+			returnForm = wp.document.all(oForm.DataField.value.substr(0, vDot));
+			if (returnForm)
+			{
+				returnElement = returnForm.elements(oForm.DataField.value.substr(vDot + 1));
+			}
+		}
+	}
+	
+	return
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

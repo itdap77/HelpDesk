@@ -1,0 +1,80 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:PROPERTY NAME="framename" />
+<PUBLIC:PROPERTY NAME="datafield" />
+<PUBLIC:METHOD NAME="Show" />
+<PUBLIC:ATTACH EVENT="onclick" ONEVENT="InitFrame(whichCaller())" />
+
+<SCRIPT language="JScript">
+
+var oDocument = window.document;
+var CALENDAR_FRAME_NAME = 'CalFrame';
+
+var wFrame = window.frames(framename);
+var dFrame = oDocument.all(framename);
+var oForm
+var oCaller
+
+function Show()
+{
+	InitFrame(this);
+}
+
+function InitFrame(lCaller)
+{
+	event.cancelBubble=true;
+	
+	oCaller = lCaller;
+	oForm = whichForm(oCaller);
+	
+	ShowFrame();
+}
+
+function whichCaller()
+{
+	var e = event.srcElement
+	while (e.tagName != 'IMG')
+		e = e.parentElement
+	return e
+}
+
+function whichForm(lCaller)
+{
+	var e = lCaller
+	while (e.tagName != 'FORM')
+		e = e.parentElement
+	return e
+}
+
+function ShowFrame()
+{
+    var oDataField = oForm.elements(datafield);
+    
+    if (oDataField && dFrame.document.readyState=='complete')
+    {
+		dFrame.caller = oCaller.name;
+		dFrame.Show();
+		
+		if (framename != CALENDAR_FRAME_NAME)
+		{
+			wFrame.oFrameName = framename;
+			wFrame.oDataField = oForm.name + '.' + oDataField.name;
+			//alert(wFrame.document.all.length);
+			wFrame.InitBusqueda();
+		}
+		else
+		{
+			wFrame.vSelectedDate = new Date();
+			wFrame.oDateField = oDataField;
+			wFrame.TDC();
+			wFrame.ShowCal();
+		}		
+	}
+	else
+		window.alert('Falto el campo de retorno');
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

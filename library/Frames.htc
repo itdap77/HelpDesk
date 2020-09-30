@@ -1,0 +1,94 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:PROPERTY NAME="caller" />
+<PUBLIC:METHOD NAME="Show" />
+<PUBLIC:METHOD NAME="Hide" />
+
+<SCRIPT language="JScript">
+
+var oDocument = window.document;
+
+if (oDocument.TotalFrame == null)
+{
+	oDocument.attachEvent('onclick', HideFrames);
+	oDocument.TotalFrame = 0;
+	oDocument.arrFrameInfo = new Array(10);
+}
+
+function RegisterFrame(FrameName)
+{
+	var vFound = false;
+	
+	for (i = 0; i < oDocument.TotalFrame; i++) 
+	{
+		if (oDocument.arrFrameInfo[i] == FrameName)
+		{
+			vFound = true;
+			break;
+		}
+	}
+	if (!vFound)
+	{
+		oDocument.arrFrameInfo[i] = FrameName;
+		oDocument.TotalFrame += 1;
+	}
+}
+
+function Show()
+{
+    var dF=this
+    var oReference = oDocument.all(caller)
+
+	// Oculta los frames registrados antes de mostrar
+	HideFrames();
+	
+	//Left
+	var x = GetAbsoluteLeft(oReference);
+	var xFar = oDocument.body.clientWidth + oDocument.body.scrollLeft;
+	
+	if ((x + dF.style.pixelWidth) > xFar)
+		dF.style.left = xFar - dF.style.pixelWidth - 1;		
+	else
+		dF.style.left = x;
+		   
+    //Top
+    var eT = GetAbsoluteTop(oReference);
+    var eH = oReference.offsetHeight;
+    var dH = dF.style.pixelHeight;
+    var sT = oDocument.body.scrollTop;
+
+    if(eT-dH >= sT && eT+eH+dH > oDocument.body.clientHeight+sT)
+      dF.style.top=eT-dH;
+    else
+      dF.style.top=eT+eH;
+
+    if("none"==dF.style.display)
+      dF.style.display="block";
+
+	// Registra el nuevo frame
+	RegisterFrame(dF.id);
+
+}
+
+function HideFrames()
+{
+
+	// Oculta los frames registrados
+	for (i = 0; i < oDocument.TotalFrame; i++) 
+	{
+		var oFrame = oDocument.all(oDocument.arrFrameInfo[i]);
+
+		if (oFrame)
+			oFrame.Hide();
+	}
+}
+
+function Hide()
+{
+	this.style.display='none';
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+

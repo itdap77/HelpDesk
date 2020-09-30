@@ -1,0 +1,35 @@
+<PUBLIC:COMPONENT>
+
+<PUBLIC:PROPERTY NAME="BlockName" />
+<PUBLIC:ATTACH EVENT="onclick" ONEVENT="ToggleBlock()" />
+
+<SCRIPT language="JScript">
+
+function ToggleBlock()
+{
+	var vBlockName = BlockName
+	var oDivBlock = window.document.all('div' + vBlockName);
+	var oDivVisible = window.document.all('div' + vBlockName + '_visible');
+	var oDivHidden = window.document.all('div' + vBlockName + '_hidden');
+	var imgUpDwn = oDivBlock.all('updwn' + vBlockName);
+	
+	if (oDivVisible.style.display=='block')
+	{
+		oDivVisible.style.display='none';
+		oDivHidden.style.display='block';
+		if (imgUpDwn)
+			imgUpDwn.src  = 'images/expand_mo.gif';
+	}
+	else
+	{
+		oDivVisible.style.display='block';
+		oDivHidden.style.display='none';
+		if (imgUpDwn)
+			imgUpDwn.src  = 'images/collapse_mo.gif';
+	}
+}
+
+</SCRIPT>
+
+</PUBLIC:COMPONENT>
+
