@@ -5,6 +5,8 @@
 ' Catalog=""
 ' Schema=""
 
-MM_HelpDesk_STRING = Server=tcp:itdapsql.database.windows.net,1433;Initial Catalog=HelpDesk;Persist Security Info=False;User ID=;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+MM_HelpDesk_STRING = Server=tcp:itdaphdsql.database.windows.net,1433;Initial Catalog=HelpDesk;Persist Security Info=False;User ID=dsfsd3425fdgs$$;Password=+n8GlgVq!&R?o;ty;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+
 
 %>
