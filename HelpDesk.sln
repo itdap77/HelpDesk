@@ -8,22 +8,22 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HelpDesk", "http://localhos
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
 		Debug.AspNetCompiler.VirtualPath = "/HelpDesk"
 		Debug.AspNetCompiler.PhysicalPath = ".\"
-		Debug.AspNetCompiler.TargetPath = "./PrecompiledWeb\Debug\"
+		Debug.AspNetCompiler.TargetPath = "..\..\PrecompiledWeb\Debug\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/HelpDesk"
 		Release.AspNetCompiler.PhysicalPath = ".\"
-		Release.AspNetCompiler.TargetPath = "./PrecompiledWeb\Release\"
+		Release.AspNetCompiler.TargetPath = "..\..\PrecompiledWeb\Release\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		SlnRelativePath = ".\"
-		 {C647E836-EBE2-403F-9FEE-F3CDD2CFBC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C647E836-EBE2-403F-9FEE-F3CDD2CFBC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndProjectSection
-	
+
 EndProject
 
 Global
